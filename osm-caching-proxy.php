@@ -23,7 +23,7 @@ if(empty($z) OR empty($x) OR empty($y)) {
 /**
  * Function to Download Tiles
  */
-function download($storage, $z, $x, $y) {
+function download($storage, $z, $x, $y, $operator) {
     // Set maximum execution time to unlimited
     set_time_limit(0);
     // Define the source URL for the tile
