@@ -48,24 +48,20 @@ function download($storage, $z, $x, $y, $operator) {
 }
 
 // Check if directories exist and download tile
-if(!file_exists($storage)) {
-    mkdir($storage, 0750);
+$tileDirectory = $storage . $z . '/' . $x;
+if (!is_dir($tileDirectory)) {
+    mkdir($tileDirectory, 0750, true);
 }
-if(!file_exists($storage . $z)) {
-    mkdir($storage . $z, 0750);
-}
-if(!file_exists($storage . $z . '/' . $x)) {
-    mkdir($storage . $z . '/' . $x, 0750);
-}
-if(file_exists($storage . $z . '/' . $x . '/' . $y . '.png')) {
+
+$tilePath = $tileDirectory . '/' . $y . '.png';
+if (file_exists($tilePath)) {
     // If the tile exists, check its age
-    $age = filemtime($storage . $z . '/' . $x . '/' . $y . '.png');
+    $age = filemtime($tilePath);
     // If the tile is older than the defined TTL, download a new one
-    if((time() + $ttl) >= $age) {
+    if ((time() + $ttl) >= $age) {
         download($storage, $z, $x, $y);
     }
-}
-else {
+} else {
     // If the tile doesn't exist, download it
     download($storage, $z, $x, $y);
 }
