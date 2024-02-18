@@ -15,7 +15,6 @@ $operator = 'you@mail.com';
 $z = $_GET['z'] ?? '';
 $x = $_GET['x'] ?? '';
 $y = $_GET['y'] ?? '';
-
 // If any of the variables are empty, terminate the script
 if(empty($z) || empty($x) || empty($y)) {
     die;
