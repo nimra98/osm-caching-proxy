@@ -60,11 +60,11 @@ if (file_exists($tilePath)) {
     $age = filemtime($tilePath);
     // If the tile is older than the defined TTL, download a new one
     if ((time() + $ttl) >= $age) {
-        download($storage, $z, $x, $y);
+        download($storage, $z, $x, $y, $operator);
     }
-} else {
+} else {    
     // If the tile doesn't exist, download it
-    download($storage, $z, $x, $y);
+    download($storage, $z, $x, $y, $operator);
 }
 
 // Output the tile image
