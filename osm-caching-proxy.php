@@ -12,7 +12,9 @@ $z = $_GET['z'];
 $x = $_GET['x'];
 $y = $_GET['y'];
 if(empty($z) OR empty($x) OR empty($y)) {
-	die;
+
+    die;
+
 }
 
 
@@ -40,21 +42,21 @@ function download($storage, $z, $x, $y) {
 
 // Check, if directories exist & download tile
 if(!file_exists($storage)) {
-	mkdir($storage, 0750);
+    mkdir($storage, 0750);
 }
 if(!file_exists($storage . $z)) {
-	mkdir($storage . $z, 0750);
+    mkdir($storage . $z, 0750);
 }
 if(!file_exists($storage . $z . '/' . $x)) {
-	mkdir($storage . $z . '/' . $x, 0750);
+    mkdir($storage . $z . '/' . $x, 0750);
 }
 if(file_exists($storage . $z . '/' . $x . '/' . $y . '.png')) {
-	$age = filemtime($storage . $z . '/' . $x . '/' . $y . '.png');
-	if((time() + $ttl) >= $age) {
+    $age = filemtime($storage . $z . '/' . $x . '/' . $y . '.png');
+    if((time() + $ttl) >= $age) {
 
         download($storage, $z, $x, $y);
 
-	}
+    }
 }
 else {
 
