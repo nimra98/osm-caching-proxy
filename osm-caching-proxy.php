@@ -12,11 +12,12 @@ $operator = 'you@mail.com';
 /**
  * Read Input Variables
  */
-$z = $_GET['z'];
-$x = $_GET['x'];
-$y = $_GET['y'];
-if(empty($z) OR empty($x) OR empty($y)) {
-    // If any of the variables are empty, terminate the script
+$z = $_GET['z'] ?? '';
+$x = $_GET['x'] ?? '';
+$y = $_GET['y'] ?? '';
+
+// If any of the variables are empty, terminate the script
+if(empty($z) || empty($x) || empty($y)) {
     die;
 }
 
